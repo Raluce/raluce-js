@@ -1,0 +1,32 @@
+{
+  "name": "raluce",
+  "version": "0.1.0",
+  "description": "Raluce API for JavaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raluce/raluce-js.git"
+  },
+  "keywords": [
+    "Raluce"
+  ],
+  "author": "Raluce LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Raluce/raluce-js/issues"
+  },
+  "homepage": "https://github.com/Raluce/raluce-js#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  }
+}
