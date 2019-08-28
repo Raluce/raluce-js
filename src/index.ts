@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Franchise } from './models/Franchise';
+import { Franchise, build as buildFranchise } from './models/Franchise';
 import { Brand } from './models/Brand';
 
 class Raluce {
@@ -9,7 +9,9 @@ class Raluce {
     try {
       let response = await axios.get(`${this.API_URL}/franchises/${id}`);
 
-      return <Franchise> response.data;
+      var res = buildFranchise(response.data);
+
+      return res;
     } catch (e) {
       return null;
     }

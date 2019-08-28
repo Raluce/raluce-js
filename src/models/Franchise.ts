@@ -5,8 +5,8 @@ export interface Franchise {
   phone: string,
   deliveryZipcodes: [string],
   geolocation: {
-    latitude: string,
-    longitude: string,
+    latitude: number,
+    longitude: number,
   },
   address: {
     line1: string,
@@ -17,6 +17,32 @@ export interface Franchise {
     country: string,
   },
   brand: Brand,
+  isOpen: boolean
 }
+
+export function build(raw: any): Franchise  {
+  var { geolocation, address } = raw;
+
+  var franchise = {} as Franchise;
+
+  franchise.id = raw.id;
+  franchise.phone = raw.phone;
+  franchise.deliveryZipcodes = raw.deliveryZipcodes;
+  franchise.geolocation = {
+    latitude: geolocation.latitude,
+    longitude: geolocation.longitude
+  };
+  franchise.address = {
+    line1: address.line1,
+    line2: address.line2,
+    city: address.city,
+    state: address.state,
+    zipcode: address.zipcode,
+    country: address.country
+  };
+  franchise.isOpen = raw.isOpen;
+
+  return franchise;
+};
 
 export default Franchise;
