@@ -1,23 +1,23 @@
 import { Brand, build as buildBrand } from './Brand';
 
 export interface Franchise {
-  id: string,
-  phone: string,
-  deliveryZipcodes: [string],
+  id: string;
+  phone: string;
+  deliveryZipcodes: [string];
   geolocation: {
     latitude: number,
     longitude: number,
-  },
+  };
   address: {
-    line1: string,
-    line2: string | null,
-    city: string,
-    state: string,
-    zipcode: string,
-    country: string,
-  },
-  brand: Brand,
-  isOpen: boolean
+    line1: string;
+    line2: string | null;
+    city: string;
+    state: string;
+    zipcode: string;
+    country: string;
+  };
+  brand: Brand;
+  isOpen: boolean;
 }
 
 export function build(raw: any): Franchise  {

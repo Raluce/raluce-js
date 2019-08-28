@@ -1,10 +1,10 @@
 export interface Brand {
-  id: string,
-  name: string,
-  description: string | null,
-  color: string,
-  logo: string | null,
-  banner: string | null,
+  id: string;
+  name: string;
+  description: string | null;
+  color: string;
+  logo: string | null;
+  banner: string | null;
 }
 
 export function build(raw: any): Brand {
