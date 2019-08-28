@@ -1,4 +1,4 @@
-import Brand from './Brand';
+import { Brand, build as buildBrand } from './Brand';
 
 export interface Franchise {
   id: string,
@@ -21,7 +21,7 @@ export interface Franchise {
 }
 
 export function build(raw: any): Franchise  {
-  var { geolocation, address } = raw;
+  var { geolocation, address, brand } = raw;
 
   var franchise = {} as Franchise;
 
@@ -41,6 +41,7 @@ export function build(raw: any): Franchise  {
     country: address.country
   };
   franchise.isOpen = raw.isOpen;
+  franchise.brand = buildBrand(brand);
 
   return franchise;
 };

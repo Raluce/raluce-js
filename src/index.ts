@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Franchise, build as buildFranchise } from './models/Franchise';
-import { Brand } from './models/Brand';
 
 class Raluce {
   API_URL = "https://api.raluce.com/v1";
