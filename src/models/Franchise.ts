@@ -1,4 +1,5 @@
 import { Brand, build as buildBrand } from './Brand';
+import { Catalog, build as buildCatalog } from './Catalog';
 
 export interface Franchise {
   id: string;
@@ -18,6 +19,7 @@ export interface Franchise {
   };
   brand: Brand;
   isOpen: boolean;
+  catalog: Catalog;
 }
 
 export function build(raw: any): Franchise  {
@@ -40,8 +42,9 @@ export function build(raw: any): Franchise  {
     zipcode: address.zipcode,
     country: address.country
   };
-  franchise.isOpen = raw.isOpen;
   franchise.brand = buildBrand(brand);
+  franchise.isOpen = raw.isOpen;
+  franchise.catalog = buildCatalog(raw.catalog);
 
   return franchise;
 };
