@@ -11,7 +11,7 @@ In future releases, this package will contain a more complete JS API to intereac
 Install the package with npm:
 
 ```
-npm install raluce --save
+npm install @raluce/raluce --save
 ```
 
 ### Usage
