@@ -6,17 +6,15 @@ install: npm install
 
 jobs:
   include:
-    - stage: npm test
+    - stage: npm test & release
       node_js: 12
       script:
         - npm test
-    - stage: npm release
-      node_js: 12
-      script:
         - npm run build
         - echo "Deploying to npm!"
       deploy:
         provider: npm
         email: cgs.camilogonzalez@gmail.com
         api_key: $NPM_API_KEY
-        on: deploy-npm-release
+        on:
+          branch: master
