@@ -18,6 +18,11 @@ export interface ShoppingCart {
   }]
 }
 
+export interface ShoppingCartResponse {
+  id: string;
+  url: string;
+}
+
 export enum OrderType {
   delivery = 'delivery',
   pickup = 'pickup'

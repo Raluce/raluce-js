@@ -1,8 +1,9 @@
 {
-  "name": "raluce",
+  "name": "@raluce/raluce",
   "version": "0.1.0",
   "description": "Raluce API for JavaScript",
-  "main": "src/index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc"
