@@ -3,10 +3,13 @@ node_js:
   - 12
 
 install: npm install
-script: npm test
 
 jobs:
   include:
+    - stage: npm test
+      node_js: 12
+      script:
+        - npm test
     - stage: npm release
       node_js: 12
       script:
