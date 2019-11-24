@@ -41,7 +41,7 @@ export function build(raw: any): BrandWithFranchises {
   return brand;
 }
 
-function buildFranchiseSimplified(raw: any) {
+export function buildFranchiseSimplified(raw: any) {
   var { geolocation, address } = raw;
 
   var franchise = {} as FranchiseSimplified;

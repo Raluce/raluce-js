@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BrandWithFranchises, build as buildBrand } from './models/BrandWithFranchises';
+import { BrandWithFranchises, build as buildBrand, FranchiseSimplified, buildFranchiseSimplified } from './models/BrandWithFranchises';
 import { Franchise, build as buildFranchise } from './models/Franchise';
 import { ShoppingCart, ShoppingCartResponse } from './models/ShoppingCart';
 
@@ -26,11 +26,11 @@ class Raluce {
     }
   }
 
-  public async getFranchiesDeliveryingToZipcode(brandId: string, zipcode: string) {
+  public async getFranchiesDeliveryingToZipcode(brandId: string, zipcode: string): Promise<[FranchiseSimplified] | []> {
     try {
       let response = await axios.get(`${this.API_URL}/brands/${brandId}/franchises?deliversToZipcode=${zipcode}`);
 
-      return response.data.map(buildFranchise);
+      return response.data.map(buildFranchiseSimplified);
     } catch (e) {
       return [];
     }
