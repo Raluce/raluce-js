@@ -37,7 +37,7 @@ let brand = await raluce.getBrandById("brand id");
 ```
 
 
-#### Getting a franchise by id
+#### Getting a brand by id
 
 ```Javascript
 // Node
