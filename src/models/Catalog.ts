@@ -18,6 +18,7 @@ export function buildCategory(raw: any): Category {
   let category = {} as Category;
 
   category.id = raw.id;
+  category.name = raw.name;
   category.description = raw.description;
   category.products = raw.products.map(buildProduct);
 
