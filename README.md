@@ -18,7 +18,7 @@ npm install @raluce/raluce --save
 
 Start by importing the package and creating an instance. You will then have access to functions to interact with Raluce.
 
-#### Getting a franchise by id
+#### Getting a brand by id
 
 ```Javascript
 // Node
@@ -37,7 +37,7 @@ let brand = await raluce.getBrandById("brand id");
 ```
 
 
-#### Getting a brand by id
+#### Getting a franchise by id
 
 ```Javascript
 // Node
