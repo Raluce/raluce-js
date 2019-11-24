@@ -26,6 +26,16 @@ class Raluce {
     }
   }
 
+  public async getFranchiesDeliveryingToZipcode(brandId: string, zipcode: string) {
+    try {
+      let response = await axios.get(`${this.API_URL}/brands/${brandId}/franchises?deliversToZipcode=${zipcode}`);
+
+      return response.data.map(buildFranchise);
+    } catch (e) {
+      return [];
+    }
+  }
+
   public async createShoppingCart(shoppingCart: ShoppingCart): Promise<ShoppingCartResponse | null> {
     try {
       let { data } = await axios.post(`${this.API_URL}/shoppingcarts`, shoppingCart);
