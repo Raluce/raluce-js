@@ -25,6 +25,25 @@ Start by importing the package and creating an instance. You will then have acce
 var Raluce = require('raluce').default;
 var raluce = new Raluce();
 
+var brand = await raluce.getBrandById("brand id");
+```
+
+```Typescript
+// Typescript
+import Raluce from 'raluce';
+let raluce = new Raluce();
+
+let brand = await raluce.getBrandById("brand id");
+```
+
+
+#### Getting a franchise by id
+
+```Javascript
+// Node
+var Raluce = require('raluce').default;
+var raluce = new Raluce();
+
 var franchise = await raluce.getFranchiseById("franchise id");
 ```
 

@@ -1,17 +1,26 @@
 import axios from 'axios';
+import { BrandWithFranchises, build as buildBrand } from './models/BrandWithFranchises';
 import { Franchise, build as buildFranchise } from './models/Franchise';
 import { ShoppingCart, ShoppingCartResponse } from './models/ShoppingCart';
 
 class Raluce {
   API_URL = "https://api.raluce.com/v1";
 
+  public async getBrandById(id: string): Promise<BrandWithFranchises | null> {
+    try {
+      let response = await axios.get(`${this.API_URL}/brands/${id}`);
+
+      return buildBrand(response.data);
+    } catch (e) {
+      return null;
+    }
+  }
+
   public async getFranchiseById(id: string): Promise<Franchise | null> {
     try {
       let response = await axios.get(`${this.API_URL}/franchises/${id}`);
 
-      var res = buildFranchise(response.data);
-
-      return res;
+      return buildFranchise(response.data);
     } catch (e) {
       return null;
     }
