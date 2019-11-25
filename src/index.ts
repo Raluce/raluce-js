@@ -1,10 +1,12 @@
 import axios from 'axios';
+import * as converterFunctions from './converters';
 import { BrandWithFranchises, build as buildBrand, FranchiseSimplified, buildFranchiseSimplified } from './models/BrandWithFranchises';
 import { Franchise, build as buildFranchise } from './models/Franchise';
 import { ShoppingCart, ShoppingCartResponse } from './models/ShoppingCart';
 
 class Raluce {
   API_URL = "https://api.raluce.com/v1";
+  converters = converterFunctions;
 
   public async getBrandById(id: string): Promise<BrandWithFranchises | null> {
     try {
