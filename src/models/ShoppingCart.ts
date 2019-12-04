@@ -1,6 +1,7 @@
 import Customer from './customer';
 
 export interface ShoppingCart {
+  franchiseId: string;
   customer: Customer;
   tip: number;
   note: string;
