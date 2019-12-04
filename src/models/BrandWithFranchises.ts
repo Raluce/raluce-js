@@ -34,7 +34,7 @@ export function build(raw: any): BrandWithFranchises {
   brand.name = raw.name;
   brand.description = raw.description;
   brand.color = raw.color;
-  brand.logo = raw.color;
+  brand.logo = raw.logo;
   brand.banner = raw.banner;
   brand.franchises = raw.franchises.map(buildFranchiseSimplified)
 
