@@ -3,12 +3,15 @@ import { Catalog, build as buildCatalog } from './Catalog';
 
 export interface Franchise {
   id: string;
+
   phone: string;
   deliveryZipcodes: [string];
-  geolocation: {
-    latitude: number,
-    longitude: number,
-  };
+  isOpen: boolean;
+  // geolocation: {
+  //   latitude: number,
+  //   longitude: number,
+  // };
+
   address: {
     line1: string;
     line2: string | null;
@@ -18,11 +21,13 @@ export interface Franchise {
     country: string;
   };
   brand: Brand;
-  isOpen: boolean;
-  catalog: Catalog;
+  onlineCatalog: Catalog;
+
+  percentageProductTax: number;
+  deliveryFee: number;
 }
 
-export function build(raw: any): Franchise  {
+export function build(raw: any, displayedLanguage: string, displayedCurrency: string): Franchise  {
   var { geolocation, address, brand } = raw;
 
   var franchise = {} as Franchise;
@@ -30,10 +35,10 @@ export function build(raw: any): Franchise  {
   franchise.id = raw.id;
   franchise.phone = raw.phone;
   franchise.deliveryZipcodes = raw.deliveryZipcodes;
-  franchise.geolocation = {
-    latitude: geolocation.latitude,
-    longitude: geolocation.longitude
-  };
+  // franchise.geolocation = {
+  //   latitude: geolocation.latitude,
+  //   longitude: geolocation.longitude
+  // };
   franchise.address = {
     line1: address.line1,
     line2: address.line2,
@@ -44,7 +49,10 @@ export function build(raw: any): Franchise  {
   };
   franchise.brand = buildBrand(brand);
   franchise.isOpen = raw.isOpen;
-  franchise.catalog = buildCatalog(raw.catalog);
+  franchise.percentageProductTax = raw.percentageProductTax;
+  franchise.deliveryFee = raw.deliveryFee;
+
+  franchise.onlineCatalog = buildCatalog(raw.onlineCatalog, displayedLanguage, displayedCurrency);
 
   return franchise;
 };

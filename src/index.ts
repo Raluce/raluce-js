@@ -5,14 +5,16 @@ import { Franchise, build as buildFranchise } from './models/Franchise';
 import { ShoppingCart, ShoppingCartResponse } from './models/ShoppingCart';
 
 class Raluce {
-  API_URL = "https://api.raluce.com/v1";
+  API_URL = "http://localhost:5000/v1.2";
+  displayedLanguage = "en";
+  displayedCurrency = "usd";
   converters = converterFunctions;
 
   public async getBrandById(id: string): Promise<BrandWithFranchises | null> {
     try {
-      let response = await axios.get(`${this.API_URL}/brands/${id}`);
-
-      return buildBrand(response.data);
+      let brandResponse = await axios.get(`${this.API_URL}/brands/${id}`);
+      let franchisesResponse = await axios.get(`${this.API_URL}/public/brands/${brandResponse.data.id}/franchises`);
+      return buildBrand(brandResponse.data, franchisesResponse.data);
     } catch (e) {
       return null;
     }
@@ -20,9 +22,9 @@ class Raluce {
 
   public async getFranchiseById(id: string): Promise<Franchise | null> {
     try {
-      let response = await axios.get(`${this.API_URL}/franchises/${id}`);
+      let response = await axios.get(`${this.API_URL}/public/franchises/${id}`);
 
-      return buildFranchise(response.data);
+      return buildFranchise(response.data, this.displayedLanguage, this.displayedCurrency);
     } catch (e) {
       return null;
     }

@@ -9,7 +9,7 @@ describe('Raluce', () => {
 
   describe('Get brand', () => {
     it ('Should get a brand by id', async () => {
-      let brandId = '83ca7c56-7c80-4f1d-810d-f0ffe09779b7';
+      let brandId = 'b448a3c6-9a27-4ba0-9abc-551286693350';
       let brand = await raluce.getBrandById(brandId);
 
       if (!brand) {
@@ -28,7 +28,7 @@ describe('Raluce', () => {
 
   describe('Get franchise', () => {
     it('Should get a franchise by id', async () => {
-      let franchiseId = '8cb7f4f5-60ad-425c-9a75-3a7a1497f882';
+      let franchiseId = '87191bf0-0c9e-43eb-b18e-04ebddc2719a';
       let franchise = await raluce.getFranchiseById(franchiseId);
 
       if (!franchise) {

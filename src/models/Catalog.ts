@@ -2,36 +2,38 @@ import { Product, build as buildProduct } from './Product';
 
 export interface Catalog {
   id: string;
-  name: string;
-  description: string | null;
-  categories: [Category];
+  name: Object;
+  description: Object | null;
+  sections: [Section];
 };
 
-export interface Category {
+export interface Section {
   id: string;
-  name: string;
-  description: string;
+  color: string;
+  name: Object;
+  description: Object | null;
   products: Product[];
 }
 
-export function buildCategory(raw: any): Category {
-  let category = {} as Category;
+export function buildSection(raw: any, displayedLanguage: string, displayedCurrency: string): Section {
+  let section = {} as Section;
 
-  category.id = raw.id;
-  category.name = raw.name;
-  category.description = raw.description;
-  category.products = raw.products.map(buildProduct);
+  section.id = raw.id;
+  section.color = raw.color;
+  section.name = raw.name[displayedLanguage];
+  section.description = raw.description[displayedLanguage];
+  section.products = raw.products.map(buildProduct, displayedLanguage, displayedCurrency);
 
-  return category;
+  return section;
 }
 
-export function build(raw: any): Catalog {
+export function build(raw: any, displayedLanguage: string, displayedCurrency: string): Catalog {
   let catalog = {} as Catalog;
 
   catalog.id = raw.id;
-  catalog.name = raw.name;
-  catalog.description = raw.description;
-  catalog.categories = raw.categories.map(buildCategory);
+  catalog.name = raw.name[displayedLanguage];
+  catalog.description = raw.description[displayedLanguage];
+  catalog.sections = raw.sections.map(buildSection, displayedCurrency);
 
   return catalog;
 }

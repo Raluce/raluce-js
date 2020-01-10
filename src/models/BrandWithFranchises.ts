@@ -10,13 +10,6 @@ export interface BrandWithFranchises {
 
 export interface FranchiseSimplified {
   id: string;
-  phone: string;
-  deliveryZipcodes: [string];
-  isOpen: Boolean;
-  geolocation: {
-    latitude: number,
-    longitude: number,
-  };
   address: {
     line1: string;
     line2: string | null;
@@ -25,19 +18,27 @@ export interface FranchiseSimplified {
     zipcode: string;
     country: string;
   };
+  percentageProductTax: number;
+  deliveryFee: number;
+
+  phone: string;
+  deliveryZipcodes: [string];
+  isOpen: Boolean;
+  // geolocation: {
+  //   latitude: number,
+  //   longitude: number,
+  // };
 }
 
-export function build(raw: any): BrandWithFranchises {
+export function build(raw: any, rawFranchise: any): BrandWithFranchises {
   let brand = {} as BrandWithFranchises;
-
   brand.id = raw.id;
   brand.name = raw.name;
   brand.description = raw.description;
   brand.color = raw.color;
   brand.logo = raw.logo;
   brand.banner = raw.banner;
-  brand.franchises = raw.franchises.map(buildFranchiseSimplified)
-
+  brand.franchises = rawFranchise.map(buildFranchiseSimplified)
   return brand;
 }
 
@@ -49,10 +50,10 @@ export function buildFranchiseSimplified(raw: any) {
   franchise.id = raw.id;
   franchise.phone = raw.phone;
   franchise.deliveryZipcodes = raw.deliveryZipcodes;
-  franchise.geolocation = {
-    latitude: geolocation.latitude,
-    longitude: geolocation.longitude
-  };
+  // franchise.geolocation = {
+  //   latitude: geolocation.latitude,
+  //   longitude: geolocation.longitude
+  // };
   franchise.address = {
     line1: address.line1,
     line2: address.line2,
